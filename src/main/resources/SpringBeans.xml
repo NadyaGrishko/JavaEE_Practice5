@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beans>
+
+        <bean id="author1" class="ua.home.kma.javaee.lab03.catalogue.Author">
+            <constructor-arg name="name" value="Bunov"/>
+        </bean>
+        <bean id="author2" class="ua.home.kma.javaee.lab03.catalogue.Author">
+            <constructor-arg name="name" value="Sheva"/>
+        </bean>
+
+        <bean id="book1" class="ua.home.kma.javaee.lab03.catalogue.Book">
+            <constructor-arg index="0" value="Computers in our lives"/>
+            <constructor-arg index="1" value="2016"/>
+            <constructor-arg index="2" ref="author1"/>
+        </bean>
+        <bean id="book2" class="ua.home.kma.javaee.lab03.catalogue.Book">
+            <constructor-arg index="0" value="Anna Karenina"/>
+            <constructor-arg index="1" value="2014"/>
+            <constructor-arg index="2" ref="author1"/>
+        </bean>
+        <bean id="book3" class="ua.home.kma.javaee.lab03.catalogue.Book">
+            <constructor-arg name="name" value="Mertvie Dushi"/>
+            <constructor-arg name="year" value="1950"/>
+            <constructor-arg name="author" ref="author2"/>
+        </bean>
+
+        <bean id="catalogue" class="ua.home.kma.javaee.lab03.catalogue.Catalogue">
+            <constructor-arg name="title" value="My catalogue"/>
+            <constructor-arg name="books">
+                <list>
+                    <ref bean="book1"/>
+                    <ref bean="book2"/>
+                    <ref bean="book3"/>
+                </list>
+            </constructor-arg>
+        </bean>
+    </beans>
+
+</beans>
